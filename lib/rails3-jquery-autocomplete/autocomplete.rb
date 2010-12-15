@@ -21,7 +21,7 @@ module Rails3JQueryAutocomplete
   #
   #
   module ClassMethods
-    def autocomplete(object, method, options = {})
+    def autocomplete(object, method, scope = {}, options = {})
 
       define_method("autocomplete_#{object}_#{method}") do
 
@@ -29,7 +29,7 @@ module Rails3JQueryAutocomplete
 
         if term && !term.empty?
           items = get_items(:model => get_object(object), \
-            :options => options, :term => term, :method => method) 
+            :options => options, :term => term, :method => method, :scope => scope) 
         else
           items = {}
         end
